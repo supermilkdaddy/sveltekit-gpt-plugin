@@ -1,0 +1,9 @@
+[user]
+  email = supermilkdaddy@gmail.com
+  name = supermilkdaddy
+
+[github]
+  user = "supermilkdaddy"
+
+[core]
+  sshCommand = "ssh -i ~/.ssh/smd_ed25519"

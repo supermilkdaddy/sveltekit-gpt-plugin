@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: TODO Plugin SvelteKit
+  description: A plugin that allows the user to create and manage a TODO list using ChatGPT.
+  version: 'v1'
+servers:
+  - url: http://localhost:5173
+paths:
+  /api/todos:
+    get:
+      operationId: getTodos
+      summary: Get the list of todos
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTodosResponse'
+  /api/add-todo:
+    post:
+      operationId: addTodo
+      summary: add a new todo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addTodoRequest'
+      responses:
+        "200":
+          description: OK
+
+  /api/delete-todo:
+    post:
+      operationId: deleteTodo
+      summary: delete a todo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deleteTodoRequest'
+      responses:
+        "200":
+          description: OK
+
+components:
+  schemas:
+    deleteTodoRequest:
+      type: object
+      required:
+      - todo
+      properties:
+        todo:
+          type: string
+          description: The todo to delete from the list
+          required: true
+
+    addTodoRequest:
+      type: object
+      required:
+      - todo
+      properties:
+        todo:
+          type: string
+          description: The todo to add to the list
+          required: true
+
+    getTodosResponse:
+      type: object
+      properties:
+        todos:
+          type: array
+          items:
+            type: object
+          description: The list of todos.
+
